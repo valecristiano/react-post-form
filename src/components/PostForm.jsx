@@ -4,10 +4,10 @@ import { useState } from "react";
 export default function PostForm() {
   // stato iniziale del form
   const initialFormState = {
-    postAuthor: "",
-    postTitle: "",
-    postText: "",
-    isPublic: false,
+    author: "",
+    title: "",
+    body: "",
+    public: false,
   };
 
   const [formState, setFormState] = useState(initialFormState);
@@ -29,7 +29,9 @@ export default function PostForm() {
   const submitFormData = (e) => {
     e.preventDefault();
     // post axios
-    axios.post("https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts", { formState }).then(() => {
+    axios.post("https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts", formState).then((res) => {
+      console.log("Response", res.data);
+
       console.table(formState);
       //visibilità alert
       setButtonState(true);
@@ -47,26 +49,26 @@ export default function PostForm() {
             <label htmlFor="author" className="form-label">
               Autore
             </label>
-            <input name="postAuthor" value={formState.postAuthor} onChange={handleFormChange} type="text" className="form-control" id="author" />
+            <input name="author" value={formState.author} onChange={handleFormChange} type="text" className="form-control" id="author" />
           </div>
           {/* titolo */}
           <div className="col-md-6">
             <label htmlFor="title" className="form-label">
               Titolo
             </label>
-            <input name="postTitle" value={formState.postTitle} onChange={handleFormChange} type="text" className="form-control" id="title" />
+            <input name="title" value={formState.title} onChange={handleFormChange} type="text" className="form-control" id="title" />
           </div>
           {/* testo */}
           <div className="col-12">
             <label htmlFor="text-area" className="form-label">
               Testo
             </label>
-            <textarea name="postText" value={formState.postText} onChange={handleFormChange} className="form-control" aria-label="With textarea" id="text-area"></textarea>
+            <textarea name="body" value={formState.body} onChange={handleFormChange} className="form-control" aria-label="With textarea" id="text-area"></textarea>
           </div>
           {/* checkbox */}
           <div className="col-12">
             <div className="form-check">
-              <input name="isPublic" checked={formState.isPublic} onChange={handleFormChange} className="form-check-input" type="checkbox" id="gridCheck" />
+              <input name="public" checked={formState.public} onChange={handleFormChange} className="form-check-input" type="checkbox" id="gridCheck" />
               <label className="form-check-label" htmlFor="gridCheck">
                 Pubblico
               </label>

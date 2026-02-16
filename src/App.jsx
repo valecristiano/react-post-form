@@ -19,12 +19,19 @@ export default function App() {
     });
   };
 
+  const submitFormData = (e) => {
+    e.preventDefault();
+
+    axios.post("https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts", { formState });
+    console.table(formState);
+  };
+
   return (
     <>
       <Header></Header>
       <main>
         <section className="container">
-          <form className="row g-3 mt-3">
+          <form onSubmit={submitFormData} className="row g-3 mt-3">
             {/* //autore */}
             <div className="col-md-6">
               <label htmlFor="author" className="form-label">

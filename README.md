@@ -1,16 +1,18 @@
-# React + Vite
+Oggi creeremo il nostro primo form multifield per inviare dati in POST ad un’API.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dovremo creare una nuova app React che contenga un form per creare un nuovo post all’interno di un blog.
 
-Currently, two official plugins are available:
+I dati che il form dovrà inviare sono i seguenti:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+author (string) - L’autore del post
+title (string) - Il titolo del post
+body (string) - Il testo del post
+public (boolean) - Se il post deve essere pubblico (true) o una bozza (false)
 
-## React Compiler
+L’endpoint a cui effettuare la chiamata POST è il seguente: https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Questo endpoint, in caso di successo, vi restituisce i dati inviati. Stampateli in console per verificare di essere riusciti ad inviare correttamente tutto!
 
-## Expanding the ESLint configuration
+Bonus
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+aggiungere e gestire un alert per dare agli utenti un feedback sull’invio del form
